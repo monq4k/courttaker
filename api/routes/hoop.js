@@ -4,7 +4,7 @@ const COMPANY = require("../model/company");
 const checkAuth = require("../middleware/check-auth");
 const jsonParser = EXPRESS.json();
 
-const COMPANY_CONTROLLER = require("../controllers/company");
+const COMPANY_CONTROLLER = require("../controllers/hoop");
 //get all companies function
 ROUTER.get("/", checkAuth, COMPANY_CONTROLLER.companyGetALL);
 

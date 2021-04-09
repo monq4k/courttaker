@@ -22,12 +22,12 @@ module.exports = sequelize.define("user", {
           type: SEQUELIZE.STRING,
           allowNull: false
         },
-        temperament: {
-          type: SEQUELIZE.STRING,
+        image: {
+          type: SEQUELIZE.BLOB,
           allowNull: false
         },
-        typeCharacter: {
-          type: SEQUELIZE.STRING,
+        hoursPlayed: {
+          type: SEQUELIZE.INTEGER,
           allowNull: false
         }
 });

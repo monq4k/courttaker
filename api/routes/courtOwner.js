@@ -4,7 +4,7 @@ const ANALYSIS = require("../model/analysis");
 const checkAuth = require("../middleware/check-auth");
 const jsonParser = EXPRESS.json();
 
-const ANALYSIS_CONTROLLER = require("../controllers/analysis");
+const ANALYSIS_CONTROLLER = require("../controllers/team");
 
 ROUTER.get("/", checkAuth, ANALYSIS_CONTROLLER.analysisGetALL);
 

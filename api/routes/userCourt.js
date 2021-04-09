@@ -4,7 +4,7 @@ const COMPANY_ROOM_CONTRACTS = require("../model/companyRoomContract");
 const checkAuth = require("../middleware/check-auth");
 const jsonParser = EXPRESS.json();
 
-const COMPANY_ROOM_CONTRACTS_CONTROLLER = require("../controllers/companyRoomContract");
+const COMPANY_ROOM_CONTRACTS_CONTROLLER = require("../controllers/userCourt");
 //get all companyRoomContracts function
 ROUTER.get("/", checkAuth, COMPANY_ROOM_CONTRACTS_CONTROLLER.companyRoomContractGetALL);
 //get companyRoomInfoAboutOne function
