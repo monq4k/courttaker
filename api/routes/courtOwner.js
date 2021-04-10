@@ -1,19 +1,20 @@
 const EXPRESS = require("express");
 const ROUTER = EXPRESS.Router();
-const ANALYSIS = require("../model/analysis");
 const checkAuth = require("../middleware/check-auth");
 const jsonParser = EXPRESS.json();
 
-const ANALYSIS_CONTROLLER = require("../controllers/team");
-
-ROUTER.get("/", checkAuth, ANALYSIS_CONTROLLER.analysisGetALL);
-
-ROUTER.get("/:id", checkAuth, ANALYSIS_CONTROLLER.analysisGetInfoAboutOne);
-
-ROUTER.post("/analyse", ANALYSIS_CONTROLLER.analysisCreateAndAnalyse);
-
-ROUTER.post("/update/:id", checkAuth, ANALYSIS_CONTROLLER.analysisUpdateInfoAboutOne);
-
-ROUTER.delete("/:id", ANALYSIS_CONTROLLER.analysisDeleteOne);
+const COURT_OWNER_CONTROLLER = require("../controllers/courtOwner");
+//get all users function
+ROUTER.get("/", checkAuth, COURT_OWNER_CONTROLLER.getAll);
+//get userInfo function
+ROUTER.get("/:id", checkAuth, COURT_OWNER_CONTROLLER.getOne);
+//create user function
+ROUTER.post("/signup", COURT_OWNER_CONTROLLER.signUp);
+//update info user
+ROUTER.post("/update/:id", checkAuth, COURT_OWNER_CONTROLLER.update);
+//login user function
+ROUTER.post("/login", jsonParser, COURT_OWNER_CONTROLLER.login);
+//delete user function
+ROUTER.delete("/:id", COURT_OWNER_CONTROLLER.delete);
 
 module.exports = ROUTER;

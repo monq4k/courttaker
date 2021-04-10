@@ -5,10 +5,11 @@ const BODY_PARSER = require('body-parser');
 
 //routes
 const USER_ROUTES = require('./api/routes/user');
-const COMPANY_ROUTES = require('./api/routes/hoop');
-const COMPANY_ROOM_ROUTES = require('./api/routes/court');
-const COMPANY_ROOM_CONTRACTS_ROUTES = require('./api/routes/userCourt');
-const ANALYSIS_ROUTES = require('./api/routes/courtOwner');
+const COURT_OWNER_ROUTES = require('./api/routes/courtOwner');
+const COURT_ROUTES = require('./api/routes/court');
+const USER_COURT_ROUTES = require('./api/routes/userCourt');
+const HOOP_ROUTES = require('./api/routes/hoop');
+const TEAM_ROUTES = require('./api/routes/team');
 
 APP.use(MORGAN('dev'));
 APP.use(BODY_PARSER.urlencoded({ extended: false }));
@@ -40,10 +41,11 @@ require('./api/database/links')();
 
 //Using routes which should handle requests
 APP.use('/user', USER_ROUTES);
-APP.use('/company', COMPANY_ROUTES);
-APP.use('/companyRoom', COMPANY_ROOM_ROUTES);
-APP.use('/companyRoomContract', COMPANY_ROOM_CONTRACTS_ROUTES);
-APP.use('/analysis', ANALYSIS_ROUTES);
+APP.use('/courtOwner', COURT_OWNER_ROUTES);
+APP.use('/court', COURT_ROUTES);
+APP.use('/userCourt', USER_COURT_ROUTES);
+APP.use('/hoop', HOOP_ROUTES);
+APP.use('/team', TEAM_ROUTES);
 
 APP.use((req, res, next) => {
   const ERROR = new Error('Not found');
