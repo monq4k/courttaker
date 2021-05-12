@@ -61,10 +61,32 @@ exports.getCourtUsers = (req, res, next) => {
 exports.update = (req, res, next) => {
   const ID = req.params.id;
 
-  const { address } = req.body;
+  const { address, image, name } = req.body;
 
   if (!!address) {
     COURT.update({ address }, { where: { id: ID } })
+      .then(() => {
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+  }
+
+  if (!!image) {
+    COURT.update({ image }, { where: { id: ID } })
+      .then(() => {
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+  }
+
+  if (!!name) {
+    COURT.update({ name }, { where: { id: ID } })
       .then(() => {
         next();
       })
@@ -86,12 +108,13 @@ exports.update = (req, res, next) => {
 
 //companyRoom create func
 exports.create = (req, res, next) => {
-  const { idCourtOwner, address, image } = req.body;
+  const { idCourtOwner, address, image, name } = req.body;
 
   COURT.create({
     idCourtOwner,
     address,
-    image
+    image,
+    name
   })
     .then((result) => {
       console.log(result);

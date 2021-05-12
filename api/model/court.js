@@ -14,5 +14,9 @@ module.exports = sequelize.define('court', {
   image: {
     type: SEQUELIZE.STRING,
     allowNull: false,
+  },
+  name: {
+    type: SEQUELIZE.STRING,
+    allowNull: false,
   }
 });
