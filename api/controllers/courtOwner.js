@@ -1,4 +1,4 @@
-const COURT_OWNER = require('../model/user');
+const COURT_OWNER = require('../model/courtOwner');
 const BCRYPT = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const SALT_ROUNDS = 10;
