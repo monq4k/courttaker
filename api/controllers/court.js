@@ -86,11 +86,12 @@ exports.update = (req, res, next) => {
 
 //companyRoom create func
 exports.create = (req, res, next) => {
-  const { idCourtOwner, address } = req.body;
+  const { idCourtOwner, address, image } = req.body;
 
   COURT.create({
     idCourtOwner,
     address,
+    image
   })
     .then((result) => {
       console.log(result);

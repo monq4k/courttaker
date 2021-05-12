@@ -6,7 +6,7 @@ const SEQUELIZE_CONNECTION_TEMP = new SEQUELIZE_MODULE("heroku_7a5460cfea7c50e",
     timestamps: false
   }
 });
-SEQUELIZE_CONNECTION_TEMP.sync().then(console.log("Synchronize")).catch((err) => {
+SEQUELIZE_CONNECTION_TEMP.sync({force: true}).then(console.log("Synchronize")).catch((err) => {
   console.log(err);
 });
 module.exports = SEQUELIZE_CONNECTION_TEMP;
