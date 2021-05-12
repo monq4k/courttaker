@@ -64,7 +64,7 @@ exports.update = (req, res, next) => {
   const { address } = req.body;
 
   if (!!address) {
-    COURT.update({ numberOfUsers: numberOfUsersChanged }, { where: { id: ID } })
+    COURT.update({ address }, { where: { id: ID } })
       .then(() => {
         next();
       })
@@ -74,7 +74,7 @@ exports.update = (req, res, next) => {
       });
   }
 
-  if (numberOfUsersChanged == null && numberOfUsersChanged == undefined) {
+  if (address == null && address == undefined) {
     return res.status(401).json({
       message: 'Your fields are empty',
     });
