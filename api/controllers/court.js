@@ -3,11 +3,11 @@ const COURT = require('../model/court');
 //get all companyRooms func
 exports.getAll = (req, res, next) => {
   COURT.findAll()
-    .then((companyRooms) => {
-      if (companyRooms) {
-        console.log('From database: ', companyRooms);
+    .then((courts) => {
+      if (courts) {
+        console.log('From database: ', courts);
         res.status(200).json({
-          companyRooms: companyRooms,
+          courts: courts,
         });
       } else {
         res
@@ -43,19 +43,19 @@ exports.getOne = (req, res, next) => {
     });
 };
 
-// //multirequest and example of request from
-// exports.companyRoomGetUsers = (req, res, next) => {
-//     const idCompanyRoom = req.params.id;
-//     const query = "SELECT `companyroomcontracts`.`idUser`, `users`.`fullName` FROM `users`, `companyroomcontracts` WHERE `users`.`id` = `companyroomcontracts`.`idUser` AND `companyroomcontracts`.`idCompanyRoom` = " + idCompanyRoom;
-//     sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
-//         .then(connections => {
-//             return res.status(200).json(connections);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json({ error: err });
-//         })
-// }
+//multirequest and example of request from
+exports.getCourtUsers = (req, res, next) => {
+    const idCourt = req.params.id;
+    const query = "SELECT `courtUsers`.`idUser`, `users`.`fullName` FROM `users`, `courtUsers` WHERE `users`.`id` = `courtUsers`.`idUser` AND `companyroomcontracts`.`idCompanyRoom` = " + idCompanyRoom;
+    sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
+        .then(users => {
+            return res.status(200).json(users);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err });
+        })
+}
 
 //companyRoom update info func
 exports.update = (req, res, next) => {
